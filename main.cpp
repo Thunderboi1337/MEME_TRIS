@@ -1,13 +1,31 @@
+#include <raylib.h>
+#include "grid.h"
 
-
-#include "raylib.h"
+#define FPS 60
 
 int main(void)
 {
-    const int screenWidth = 600;
-    const int screenHeight = 450;
+
+    Color darkBlue = {44, 44, 127, 255};
+
+    const int screenWidth = 300;
+    const int screenHeight = 600;
+
+    Grid grid = Grid();
+    grid.init();
+    grid.print();
 
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
+    SetTargetFPS(FPS);
+
+    while (WindowShouldClose() == false)
+    {
+        BeginDrawing();
+
+        ClearBackground(darkBlue);
+
+        EndDrawing();
+    }
 
     CloseWindow(); // Close window and OpenGL context
 
