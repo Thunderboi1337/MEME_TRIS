@@ -4,8 +4,6 @@
 
 #define FPS 60
 
-#define FPS 60
-
 int main(void)
 {
 
@@ -16,7 +14,6 @@ int main(void)
 
     Grid grid = Grid();
     grid.init();
-    grid.print();
 
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
@@ -26,6 +23,7 @@ int main(void)
         BeginDrawing();
 
         ClearBackground(darkBlue);
+        grid.Draw();
 
         EndDrawing();
     }

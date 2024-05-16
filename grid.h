@@ -18,7 +18,6 @@ private:
     int numCols;
     int cellSize;
 
-    std::vector<Color> get_cell_color();
     std::vector<Color> colors;
 };
 
