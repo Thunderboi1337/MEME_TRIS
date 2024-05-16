@@ -1,23 +1,31 @@
-#include "raylib.h"
+#include <iostream>
+#include <raylib.h>
+#include "grid.h"
+
+#define FPS 60
 
 #define FPS 60
 
 int main(void)
 {
 
-    Color darkblue = {44, 44, 127, 255};
+    Color darkBlue = {44, 44, 127, 255};
 
     const int screenWidth = 300;
     const int screenHeight = 600;
 
-    InitWindow(screenWidth, screenHeight, "Main"); // Initialization
+    Grid grid = Grid();
+    grid.init();
+    grid.print();
 
+    InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
 
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
-        ClearBackground(darkblue);
+
+        ClearBackground(darkBlue);
 
         EndDrawing();
     }
