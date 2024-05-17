@@ -34,3 +34,66 @@ void Game::Draw()
     grid.Draw();
     current_block.Draw();
 }
+
+bool Game::is_block_outside()
+{
+    std::vector<Position> tiles = current_block.get_cell_positions();
+    for (Position item : tiles)
+    {
+
+        if (grid.is_cell_outside(item.row, item.column))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+void Game::handle_input()
+{
+    int key_pressed = GetKeyPressed();
+    switch (key_pressed)
+    {
+    case KEY_LEFT:
+        move_block_left();
+        break;
+
+    case KEY_RIGHT:
+        move_block_right();
+        break;
+
+    case KEY_DOWN:
+        move_block_down();
+        break;
+    }
+}
+
+void Game::move_block_left()
+{
+    current_block.Move(0, -1);
+    if (is_block_outside())
+    {
+        current_block.Move(0, 1);
+    }
+}
+
+void Game::move_block_right()
+{
+
+    current_block.Move(0, 1);
+    if (is_block_outside())
+    {
+        current_block.Move(0, -1);
+    }
+}
+
+void Game::move_block_down()
+{
+
+    current_block.Move(1, 0);
+    if (is_block_outside())
+    {
+        current_block.Move(-1, 0);
+    }
+}

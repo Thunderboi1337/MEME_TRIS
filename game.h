@@ -13,9 +13,18 @@ public:
 
     std::vector<Block> get_all_blocks();
 
+    void handle_input();
+
+    void move_block_left();
+
+    void move_block_right();
+
+    void move_block_down();
+
     void Draw();
 
 private:
+    bool is_block_outside();
     std::vector<Block> blocks;
     Block current_block;
     Block next_block;

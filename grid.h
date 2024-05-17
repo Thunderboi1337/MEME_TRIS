@@ -11,14 +11,14 @@ public:
     void init(void);
     void print(void);
     void Draw();
+    bool is_cell_outside(int row, int col);
     int grid[20][10];
 
 private:
+    std::vector<Color> colors;
     int numRows;
     int numCols;
     int cellSize;
-
-    std::vector<Color> colors;
 };
 
 #endif

@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "game.h
+#include "game.h"
 
 #define FPS 60
 
@@ -13,10 +13,15 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
 
+    Game game = Game();
+
     while (WindowShouldClose() == false)
     {
+        game.handle_input();
         BeginDrawing();
+
         ClearBackground(darkBlue);
+        game.Draw();
         EndDrawing();
     }
 
