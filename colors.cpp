@@ -19,5 +19,5 @@ const Color ray_white = {245, 245, 245, 255};  // White(raylib logo)
 
 std::vector<Color> get_cell_color()
 {
-    return {green, pink, blue, brown, white, red};
+    return {blue, pink, green, brown, white, red};
 }
