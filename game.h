@@ -9,14 +9,10 @@ class Game
 public:
     Game();
     Grid grid;
-    Block get_random_block();
-    std::vector<Block> get_all_blocks();
     void Draw();
     void handle_input();
-    void move_block_left();
-    void move_block_right();
-    void move_block_down();
     bool game_over;
+    int score;
 
 private:
     bool is_block_outside();
@@ -24,7 +20,13 @@ private:
     void lock_block();
     bool block_fits();
     void reset();
+    void update_score(int lines_cleared, int move_down_point);
+    void move_block_left();
+    void move_block_right();
+    void move_block_down();
     std::vector<Block> blocks;
+    Block get_random_block();
+    std::vector<Block> get_all_blocks();
     Block current_block;
     Block next_block;
 };

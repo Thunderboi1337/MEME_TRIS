@@ -1,23 +1,17 @@
 #include <vector>
 #include "colors.h"
 
-const Color light_gray = {200, 200, 200, 255}; // Light Gray
-const Color gray = {130, 130, 130, 255};       // Gray
-const Color yellow = {253, 249, 0, 255};       // Yellow
-const Color gold = {255, 203, 0, 255};         // Gold
-const Color orange = {255, 161, 0, 255};       // Orange
-const Color pink = {255, 109, 194, 255};       // Pink
-const Color red = {230, 41, 55, 255};          // Red
-const Color green = {0, 228, 48, 255};         // Green
-const Color blue = {0, 121, 241, 255};         // Blue
-const Color purple = {200, 122, 255, 255};     // Purple
-const Color brown = {127, 106, 79, 255};       // Brown
-const Color white = {255, 255, 255, 255};      // White
-const Color black = {0, 0, 0, 255};            // Black
-const Color magenta = {255, 0, 255, 255};      // Magenta
-const Color ray_white = {245, 245, 245, 255};  // White(raylib logo)
+const Color darkgray = {26, 31, 40, 255}; // Gray
+const Color yellow = {253, 249, 0, 255};  // Yellow
+const Color orange = {255, 161, 0, 255};  // Orange
+const Color pink = {255, 109, 194, 255};  // Pink
+const Color red = {230, 41, 55, 255};     // Red
+const Color green = {0, 228, 48, 255};    // Green
+const Color blue = {0, 121, 241, 255};    // Blue
+const Color cyan = {21, 204, 209, 255};   // Cyan
+const Color purple = {166, 0, 216, 255};  // Purple
 
 std::vector<Color> get_cell_color()
 {
-    return {blue, pink, green, brown, white, red};
+    return {darkgray, green, red, yellow, orange, purple, blue, cyan};
 }

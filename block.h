@@ -10,7 +10,7 @@ class Block
 {
 public:
     Block();
-    void Draw();
+    void Draw(int offset_x, int offset_y);
     void Move(int rows, int col);
     std::vector<Position> get_cell_positions();
     void rotate();

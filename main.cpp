@@ -1,3 +1,4 @@
+#include <iostream>
 #include <raylib.h>
 #include "game.h"
 
@@ -48,7 +49,12 @@ int main(void)
             DrawTextEx(font, "GAME OVER", {320, 450}, 38, 2, WHITE);
         }
 
+        char score_text[10];
+        sprintf(score_text, "%d", game.score);
+        Vector2 text_size = MeasureTextEx(font, score_text, 38, 2);
+
         DrawRectangleRounded({320, 55, 170, 60}, 0.3, 6, LIGHTGRAY);
+        DrawTextEx(font, score_text, {320 + (170 - text_size.x) / 2, 65}, 38, 2, WHITE);
         DrawRectangleRounded({320, 215, 170, 180}, 0.3, 6, LIGHTGRAY);
 
         game.Draw();
