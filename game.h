@@ -13,6 +13,7 @@ public:
     void handle_input();
     bool game_over;
     int score;
+    void move_block_down();
 
 private:
     bool is_block_outside();
@@ -23,7 +24,6 @@ private:
     void update_score(int lines_cleared, int move_down_point);
     void move_block_left();
     void move_block_right();
-    void move_block_down();
     std::vector<Block> blocks;
     Block get_random_block();
     std::vector<Block> get_all_blocks();

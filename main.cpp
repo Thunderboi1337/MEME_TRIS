@@ -42,11 +42,11 @@ int main(void)
 
         BeginDrawing();
         ClearBackground(darkBlue);
-        DrawTextEx(font, "Score", {365, 15}, 38, 2, WHITE);
-        DrawTextEx(font, "Next", {370, 175}, 38, 2, WHITE);
+        DrawTextEx(font, "Score", {355, 15}, 38, 2, WHITE);
+        DrawTextEx(font, "Next", {365, 175}, 38, 2, WHITE);
         if (game.game_over)
         {
-            DrawTextEx(font, "GAME OVER", {320, 450}, 38, 2, WHITE);
+            DrawTextEx(font, "GAME OVER", {320, 450}, 30, 2, WHITE);
         }
 
         char score_text[10];
