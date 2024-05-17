@@ -1,21 +1,14 @@
-#include <iostream>
 #include <raylib.h>
-#include "grid.h"
-#include "blocks.cpp"
+#include "game.h
 
 #define FPS 60
 
 int main(void)
 {
+    Color darkBlue = {44, 44, 127, 255};
 
     const int screenWidth = 300;
     const int screenHeight = 600;
-    Color darkBlue = {44, 44, 127, 255};
-
-    Grid grid = Grid();
-    grid.init();
-
-    IBlock block = IBlock();
 
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
@@ -23,10 +16,7 @@ int main(void)
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
-
         ClearBackground(darkBlue);
-        grid.Draw();
-        block.Draw();
         EndDrawing();
     }
 
