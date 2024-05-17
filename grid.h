@@ -12,6 +12,7 @@ public:
     void print(void);
     void Draw();
     bool is_cell_outside(int row, int col);
+    bool is_cell_empty(int row, int col);
     int grid[20][10];
 
 private:

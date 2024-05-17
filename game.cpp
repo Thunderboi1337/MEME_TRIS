@@ -50,6 +50,41 @@ bool Game::is_block_outside()
     return false;
 }
 
+void Game::rotate_block()
+{
+    current_block.rotate();
+    if (is_block_outside())
+    {
+        current_block.undo_rotate();
+    }
+}
+
+void Game::lock_block()
+{
+    std::vector<Position> tiles = current_block.get_cell_positions();
+    for (Position item : tiles)
+    {
+        grid.grid[item.row][item.column] = current_block.id;
+    }
+    current_block = next_block;
+    next_block = get_random_block();
+}
+
+bool Game::block_fits()
+{
+    std::vector<Position> tiles = current_block.get_cell_positions();
+    for (Position item : tiles)
+    {
+        if (grid.is_cell_empty(item.row, item.column) == false)
+        {
+
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void Game::handle_input()
 {
     int key_pressed = GetKeyPressed();
@@ -66,13 +101,17 @@ void Game::handle_input()
     case KEY_DOWN:
         move_block_down();
         break;
+
+    case KEY_UP:
+        rotate_block();
+        break;
     }
 }
 
 void Game::move_block_left()
 {
     current_block.Move(0, -1);
-    if (is_block_outside())
+    if (is_block_outside() || block_fits() == false)
     {
         current_block.Move(0, 1);
     }
@@ -82,7 +121,7 @@ void Game::move_block_right()
 {
 
     current_block.Move(0, 1);
-    if (is_block_outside())
+    if (is_block_outside() || block_fits() == false)
     {
         current_block.Move(0, -1);
     }
@@ -92,8 +131,9 @@ void Game::move_block_down()
 {
 
     current_block.Move(1, 0);
-    if (is_block_outside())
+    if (is_block_outside() || block_fits() == false)
     {
         current_block.Move(-1, 0);
+        lock_block();
     }
 }

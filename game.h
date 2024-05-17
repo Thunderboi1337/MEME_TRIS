@@ -25,6 +25,9 @@ public:
 
 private:
     bool is_block_outside();
+    void rotate_block();
+    void lock_block();
+    bool block_fits();
     std::vector<Block> blocks;
     Block current_block;
     Block next_block;

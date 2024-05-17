@@ -13,12 +13,14 @@ public:
     void Draw();
     void Move(int rows, int col);
     std::vector<Position> get_cell_positions();
+    void rotate();
+    void undo_rotate();
     int id;
     std::map<int, std::vector<Position>> cells;
 
 private:
     int cellSize;
-    int rotationState;
+    int rotation_state;
     std::vector<Color> colors;
     int rowOffset;
     int collumoffset;

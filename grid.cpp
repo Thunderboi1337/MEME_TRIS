@@ -56,3 +56,13 @@ bool Grid::is_cell_outside(int row, int col)
     }
     return true;
 }
+
+bool Grid::is_cell_empty(int row, int col)
+{
+
+    if (grid[row][col] == 0)
+    {
+        return true;
+    }
+    return false;
+}
