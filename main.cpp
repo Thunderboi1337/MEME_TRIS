@@ -15,7 +15,7 @@ int main(void)
     Grid grid = Grid();
     grid.init();
 
-    LBlock block = LBlock();
+    IBlock block = IBlock();
 
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
@@ -27,7 +27,6 @@ int main(void)
         ClearBackground(darkBlue);
         grid.Draw();
         block.Draw();
-
         EndDrawing();
     }
 
