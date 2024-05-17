@@ -68,6 +68,7 @@ void Game::lock_block()
     }
     current_block = next_block;
     next_block = get_random_block();
+    grid.clear_full_rows();
 }
 
 bool Game::block_fits()
