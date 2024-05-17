@@ -8,6 +8,7 @@ Game::Game()
     blocks = get_all_blocks();
     current_block = get_random_block();
     next_block = get_random_block();
+    game_over = false;
 }
 
 Block Game::get_random_block()
@@ -67,6 +68,11 @@ void Game::lock_block()
         grid.grid[item.row][item.column] = current_block.id;
     }
     current_block = next_block;
+    if (block_fits() == false)
+    {
+        game_over = true;
+    }
+
     next_block = get_random_block();
     grid.clear_full_rows();
 }
@@ -86,9 +92,23 @@ bool Game::block_fits()
     return true;
 }
 
+void Game::reset()
+{
+    grid.init();
+    blocks = get_all_blocks();
+    current_block = get_random_block();
+    next_block = get_random_block();
+}
+
 void Game::handle_input()
 {
     int key_pressed = GetKeyPressed();
+    if (game_over && key_pressed != 0)
+    {
+        game_over = false;
+        reset();
+    }
+
     switch (key_pressed)
     {
     case KEY_LEFT:
@@ -111,30 +131,40 @@ void Game::handle_input()
 
 void Game::move_block_left()
 {
-    current_block.Move(0, -1);
-    if (is_block_outside() || block_fits() == false)
+    if (!game_over)
     {
-        current_block.Move(0, 1);
+
+        current_block.Move(0, -1);
+        if (is_block_outside() || block_fits() == false)
+        {
+            current_block.Move(0, 1);
+        }
     }
 }
 
 void Game::move_block_right()
 {
-
-    current_block.Move(0, 1);
-    if (is_block_outside() || block_fits() == false)
+    if (!game_over)
     {
-        current_block.Move(0, -1);
+
+        current_block.Move(0, 1);
+        if (is_block_outside() || block_fits() == false)
+        {
+            current_block.Move(0, -1);
+        }
     }
 }
 
 void Game::move_block_down()
 {
-
-    current_block.Move(1, 0);
-    if (is_block_outside() || block_fits() == false)
+    if (!game_over)
     {
-        current_block.Move(-1, 0);
-        lock_block();
+
+        current_block.Move(1, 0);
+        if (is_block_outside() || block_fits() == false)
+        {
+            current_block.Move(-1, 0);
+            lock_block();
+        }
     }
 }

@@ -1,6 +1,8 @@
 #include <raylib.h>
 #include "game.h"
 
+#define FPS 60
+
 double last_update_time = 0;
 
 bool event_trigger(double interval)
@@ -16,17 +18,16 @@ bool event_trigger(double interval)
     return false;
 }
 
-#define FPS 60
-
 int main(void)
 {
     Color darkBlue = {44, 44, 127, 255};
-
-    const int screenWidth = 300;
-    const int screenHeight = 600;
+    const int screenWidth = 500;
+    const int screenHeight = 620;
 
     InitWindow(screenWidth, screenHeight, "Main window"); // Initialization
     SetTargetFPS(FPS);
+
+    Font font = LoadFontEx("Font/monogram.tff", 64, 0, 0);
 
     Game game = Game();
 
@@ -40,6 +41,16 @@ int main(void)
 
         BeginDrawing();
         ClearBackground(darkBlue);
+        DrawTextEx(font, "Score", {365, 15}, 38, 2, WHITE);
+        DrawTextEx(font, "Next", {370, 175}, 38, 2, WHITE);
+        if (game.game_over)
+        {
+            DrawTextEx(font, "GAME OVER", {320, 450}, 38, 2, WHITE);
+        }
+
+        DrawRectangleRounded({320, 55, 170, 60}, 0.3, 6, LIGHTGRAY);
+        DrawRectangleRounded({320, 215, 170, 180}, 0.3, 6, LIGHTGRAY);
+
         game.Draw();
         EndDrawing();
     }
