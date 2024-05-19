@@ -1,7 +1,7 @@
 #include "game.h"
 #include <random>
 #include "block.h"
-
+/// @brief
 Game::Game()
 {
     grid = Grid();
