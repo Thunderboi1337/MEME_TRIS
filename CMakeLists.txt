@@ -1,11 +1,25 @@
-cmake_minimum_required(VERSION 3.10)
-project(TCPCommunication)
+cmake_minimum_required(VERSION 3.14)
+project(MEMETRIS)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-# Add the -pedantic-errors flag to the CMAKE_C_FLAGS
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -pedantic-errors -lraylib")
+# Set default build type if not specified
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+endif()
+
+# Dependencies
+include(FetchContent)
+
+set(RAYLIB_VERSION 4.5.0)
+FetchContent_Declare(
+    raylib
+    URL https://github.com/raysan5/raylib/archive/refs/tags/${RAYLIB_VERSION}.tar.gz
+    FIND_PACKAGE_ARGS ${RAYLIB_VERSION} EXACT
+)
+set(RAYLIB_BUILD_EXAMPLES OFF CACHE INTERNAL "")
+FetchContent_MakeAvailable(raylib)
 
 # Create libraries
 add_library(blocklib lib/blocks/block.cpp)
@@ -52,6 +66,14 @@ target_link_libraries(positionlib PUBLIC blocklib)
 target_link_libraries(gridlib PUBLIC colorslib)
 target_link_libraries(gamelib PUBLIC blocklib blockslib positionlib colorslib gridlib)
 
+# Apply strict compile flags only to your libraries
+target_compile_options(blocklib PRIVATE ${STRICT_COMPILE_FLAGS})
+target_compile_options(blockslib PRIVATE ${STRICT_COMPILE_FLAGS})
+target_compile_options(positionlib PRIVATE ${STRICT_COMPILE_FLAGS})
+target_compile_options(colorslib PRIVATE ${STRICT_COMPILE_FLAGS})
+target_compile_options(gridlib PRIVATE ${STRICT_COMPILE_FLAGS})
+target_compile_options(gamelib PRIVATE ${STRICT_COMPILE_FLAGS})
+
 # Create the executable
 add_executable(main src/main.cpp)
 
@@ -63,4 +85,10 @@ target_include_directories(main PUBLIC
     "${PROJECT_SOURCE_DIR}/lib/game")
 
 # Link libraries to the main executable
-target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib)
+target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib raylib)
+
+# Apply strict compile flags only to the main executable
+target_compile_options(main PRIVATE ${STRICT_COMPILE_FLAGS})
+
+# Make sure Raylib is built before linking
+add_dependencies(main raylib)
