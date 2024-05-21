@@ -83,5 +83,14 @@ target_link_libraries(main gamelib blocklib blockslib positionlib colorslib grid
 # Apply strict compile flags only to the main executable
 target_compile_options(main PRIVATE ${STRICT_COMPILE_FLAGS})
 
+# Copy resource files to the build directory
+add_custom_command(
+    TARGET main POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/memes $<TARGET_FILE_DIR:main>/memes
+)
+
+
+
 # Make sure Raylib is built before linking
 add_dependencies(main raylib)
