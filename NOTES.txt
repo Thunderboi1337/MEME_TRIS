@@ -1,0 +1,1 @@
+Fix rotation bug: When rotating it removes block if block is near.
