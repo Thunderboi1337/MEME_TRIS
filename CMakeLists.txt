@@ -66,13 +66,6 @@ target_link_libraries(positionlib PUBLIC blocklib)
 target_link_libraries(gridlib PUBLIC colorslib)
 target_link_libraries(gamelib PUBLIC blocklib blockslib positionlib colorslib gridlib)
 
-# Apply strict compile flags only to your libraries
-target_compile_options(blocklib PRIVATE ${STRICT_COMPILE_FLAGS})
-target_compile_options(blockslib PRIVATE ${STRICT_COMPILE_FLAGS})
-target_compile_options(positionlib PRIVATE ${STRICT_COMPILE_FLAGS})
-target_compile_options(colorslib PRIVATE ${STRICT_COMPILE_FLAGS})
-target_compile_options(gridlib PRIVATE ${STRICT_COMPILE_FLAGS})
-target_compile_options(gamelib PRIVATE ${STRICT_COMPILE_FLAGS})
 
 # Create the executable
 add_executable(main src/main.cpp)
