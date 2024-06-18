@@ -36,12 +36,6 @@ target_include_directories(blocklib PUBLIC
     "${PROJECT_SOURCE_DIR}/lib/grid"
     "${PROJECT_SOURCE_DIR}/lib/game")
 
-target_include_directories(blockslib PUBLIC 
-    "${PROJECT_SOURCE_DIR}/lib/blocks"
-    "${PROJECT_SOURCE_DIR}/lib/colors" 
-    "${PROJECT_SOURCE_DIR}/lib/grid"
-    "${PROJECT_SOURCE_DIR}/lib/game")
-
 target_include_directories(positionlib PUBLIC 
     "${PROJECT_SOURCE_DIR}/lib/blocks"
     "${PROJECT_SOURCE_DIR}/lib/colors" 
