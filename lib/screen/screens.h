@@ -29,6 +29,7 @@
 typedef enum GameScreen
 {
     LOGO,
+    MENU,
     GAME,
     OPTIONS,
     GAMEPLAY,
