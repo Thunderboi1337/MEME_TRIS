@@ -7,10 +7,6 @@ Menu::Menu()
 {
 }
 
-void Menu::init(void)
-{
-}
-
 void Menu::Draw()
 {
 }

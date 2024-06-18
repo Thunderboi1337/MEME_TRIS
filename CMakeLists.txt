@@ -28,6 +28,7 @@ add_library(positionlib lib/blocks/position.cpp)
 add_library(colorslib lib/colors/colors.cpp)
 add_library(gridlib lib/grid/grid.cpp)
 add_library(gamelib lib/game/game.cpp)
+add_library(screenlib lib/screen/screen_logo.cpp)
 
 # Include directories for the libraries
 target_include_directories(blocklib PUBLIC 
@@ -53,6 +54,9 @@ target_include_directories(gamelib PUBLIC
     "${PROJECT_SOURCE_DIR}/lib/colors"
     "${PROJECT_SOURCE_DIR}/lib/grid")
 
+target_include_directories(screenlib PUBLIC 
+    "${PROJECT_SOURCE_DIR}/lib/screen")
+
 # Link libraries to each other
 target_link_libraries(blocklib PUBLIC gridlib colorslib)
 target_link_libraries(blockslib PUBLIC blocklib)
@@ -69,10 +73,11 @@ target_include_directories(main PUBLIC
     "${PROJECT_SOURCE_DIR}/lib/blocks"
     "${PROJECT_SOURCE_DIR}/lib/colors"
     "${PROJECT_SOURCE_DIR}/lib/grid"
-    "${PROJECT_SOURCE_DIR}/lib/game")
+    "${PROJECT_SOURCE_DIR}/lib/game"
+    "${PROJECT_SOURCE_DIR}/lib/screen")
 
 # Link libraries to the main executable
-target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib raylib)
+target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib screenlib raylib)
 
 # Apply strict compile flags only to the main executable
 target_compile_options(main PRIVATE ${STRICT_COMPILE_FLAGS})

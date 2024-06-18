@@ -8,7 +8,6 @@ class Menu
 {
 public:
     Menu();
-    void init(void);
     void Draw();
 
 private:
