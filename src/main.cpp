@@ -36,6 +36,7 @@ int main(void)
     currentScreen = LOGO;
     InitLogoScreen();
     Game game = Game();
+    Menu menu = Menu();
 
     while (WindowShouldClose() == false)
     {
@@ -52,7 +53,7 @@ int main(void)
 
             if (FinishLogoScreen())
             {
-                currentScreen = GAME;
+                currentScreen = MENU;
             }
             DrawRectangle(GetScreenWidth() - 200, GetScreenHeight() - 50, 200, 40, Fade(WHITE, 0.6f));
             DrawText("ALPHA VERSION", GetScreenWidth() - 180, GetScreenHeight() - 40, 20, DARKGRAY);
@@ -61,16 +62,8 @@ int main(void)
         case MENU:
         {
 
-            ClearBackground(WHITE);
-            UpdateLogoScreen();
-            DrawLogoScreen();
+            menu.Draw();
 
-            if (FinishLogoScreen())
-            {
-                currentScreen = GAME;
-            }
-            DrawRectangle(GetScreenWidth() - 200, GetScreenHeight() - 50, 200, 40, Fade(WHITE, 0.6f));
-            DrawText("ALPHA VERSION", GetScreenWidth() - 180, GetScreenHeight() - 40, 20, DARKGRAY);
             break;
         }
         case GAME:

@@ -1,12 +1,12 @@
-#include <raylib.h>
 #include "menu.h"
+#define RAYGUI_IMPLEMENTATION
 
 #include <raygui.h>
-
-bool showMessageBox = false;
+#include <raylib.h>
 
 Menu::Menu()
 {
+    showMessageBox = false;
 }
 
 void Menu::Draw()

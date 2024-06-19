@@ -83,7 +83,7 @@ target_include_directories(main PUBLIC
     "${PROJECT_SOURCE_DIR}/lib/menu")
 
 # Link libraries to the main executable
-target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib screenlib raylib)
+target_link_libraries(main gamelib blocklib blockslib positionlib colorslib gridlib screenlib menulib raylib)
 
 # Apply strict compile flags only to the main executable
 target_compile_options(main PRIVATE ${STRICT_COMPILE_FLAGS})

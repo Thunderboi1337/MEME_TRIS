@@ -8,9 +8,10 @@ class Menu
 {
 public:
     Menu();
-    void Draw();
+    void Draw(void);
 
 private:
+    bool showMessageBox;
 };
 
 #endif
