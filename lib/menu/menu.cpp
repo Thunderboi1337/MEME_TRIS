@@ -1,8 +1,8 @@
 #include "menu.h"
-#define RAYGUI_IMPLEMENTATION
 
-#include <raygui.h>
 #include <raylib.h>
+#define RAYGUI_IMPLEMENTATION
+#include <raygui.h>
 
 Menu::Menu()
 {
@@ -12,7 +12,7 @@ Menu::Menu()
 void Menu::Draw()
 {
 
-    if (GuiButton((Rectangle){24, 24, 120, 30}, "Show Message"))
+    if (GuiButton((Rectangle){85, 70, 250, 100}, "Show Message"))
         showMessageBox = true;
 
     if (showMessageBox)
