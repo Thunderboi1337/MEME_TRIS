@@ -1,6 +1,6 @@
 # MEME_TRIS
 
-Going to attempt doing Tetris in with Raylib, for fun
+Made Tetris in with Raylib, for fun. To try out the raylib library
 
 g++ main.cpp grid.cpp -lraylib -lGL -o main
 
